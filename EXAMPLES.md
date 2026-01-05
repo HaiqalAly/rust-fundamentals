@@ -76,3 +76,40 @@ fn main() {
     println!("Password is: {}", response);
 }
 ```
+
+04. Primitive Types
+```rust
+fn main() {
+    // Boolean example
+    let rustisawesome: bool = true;
+    if rustisawesome {
+        println!("Heck Yeah!");
+    }
+
+    // Char example
+    let chars = 'H';
+    if chars.is_alphabetic() {
+        println!("Alphabetical");
+    } else {
+        println!("It's not Alphabetical");
+    }
+
+    // Array and slices example
+    let arr = "Once upon a midnight dreary, while I pondered, weak and weary, Over many a quaint and curious volume of forgotten lore— While I nodded, nearly napping, suddenly there came a tapping, As of some one gently rapping, rapping at my chamber door. “’Tis some visitor,” I muttered, “tapping at my chamber door— Only this and nothing more.”";
+    if arr.len() >= 100 {
+        println!("Yawn...")
+    } else {
+        println!("It's too short for me to care.")
+    }
+
+    let cake = [1, 2, 3, 4];
+    let slice = &cake[0..4];
+    assert_eq!([1, 2, 3, 4], slice);
+
+
+    // Tuple example and how to access it
+    let tuple = ("The year", 1999);
+    print!("{} is {}", tuple.0, tuple.1);
+
+}
+```

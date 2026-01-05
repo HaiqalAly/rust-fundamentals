@@ -6,6 +6,7 @@ This repository contains my Rust learning journey with Rustlings exercises. My g
 1. [✔️] Variables
 2. [✔️] Functions
 3. [✔️] If
+4. [✔️] Primitive Types
 
 ## 📝 Notes
 
@@ -33,3 +34,14 @@ This repository contains my Rust learning journey with Rustlings exercises. My g
 - Conditional statements use `if`, `else if`, and `else`
 - Conditions must evaluate to a boolean (`true` or `false`)
 - Can assign the result of an `if` expression to a variable
+
+### 04. Primitive Types
+- Booleans (`bool`): `true` or `false`, used in conditionals
+- Characters (`char`): single quotes `'C'`, `'😉'`, has methods like `.is_alphabetic()`
+- Arrays & slices: fixed size, slice syntax `&a[1..4]` (end exclusive)
+- Tuples: multiple types `("name", 3.5)`, access with `tuple.0`, `tuple.1`
+
+### Quiz 1
+- Wrote function with `u32` params and return type
+- Applied bulk discount logic: if qty > 40 then 1 rustbuck/apple, else 2 rustbucks/apple
+- Used `if/else` expression as return value (no semicolon needed)
