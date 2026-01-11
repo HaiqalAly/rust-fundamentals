@@ -2,16 +2,17 @@
 This repository contains my Rust learning journey with Rustlings exercises. My goal is to get comfortable with Rust's syntax and core concepts like ownership and borrowing.
 
 ## 📊 Progress
-0. [✔️] Intro
-1. [✔️] Variables
-2. [✔️] Functions
-3. [✔️] If
-4. [✔️] Primitive Types
-5. [✔️] Vecs
-6. [✔️] Move Semantics
-7. [✔️] Structs
-8. [✔️] Enums
-9. [✔️] Strings
+0.  [✔️] Intro
+1.  [✔️] Variables
+2.  [✔️] Functions
+3.  [✔️] If
+4.  [✔️] Primitive Types
+5.  [✔️] Vecs
+6.  [✔️] Move Semantics
+7.  [✔️] Structs
+8.  [✔️] Enums
+9.  [✔️] Strings
+10. [✔️] Modules
 
 ## 📝 Notes
 
@@ -98,6 +99,11 @@ This repository contains my Rust learning journey with Rustlings exercises. My g
   - `format!()` - string interpolation
 - String slicing `&String[0..1]` returns `&str` (byte indexing, not character indexing)
 - Methods like `.trim()`, `.replace()`, `.to_lowercase()` return different types based on whether they modify
+
+### 10. Modules
+- Visibility and public API in [exercises/10_modules/modules1.rs](exercises/10_modules/modules1.rs): made `get_secret_recipe()` private and exposed `make_sausage()` with `pub`, then called `sausage_factory::make_sausage()` from `main`.
+- Aliases and re-exports in [exercises/10_modules/modules2.rs](exercises/10_modules/modules2.rs): used `pub use` with `as` to re-export `fruits::PEAR` and `veggies::CUCUMBER` as `fruit` and `veggie`, so consumers can access `delicious_snacks::fruit` and `delicious_snacks::veggie`.
+- Scoped imports in one line in [exercises/10_modules/modules3.rs](exercises/10_modules/modules3.rs): brought `SystemTime` and `UNIX_EPOCH` from `std::time` into scope with `use std::{time::SystemTime, time::UNIX_EPOCH};` and printed seconds since the Unix epoch.
 
 ### Quiz 1
 - Wrote function with `u32` params and return type
