@@ -13,6 +13,7 @@ This repository contains my Rust learning journey with Rustlings exercises. My g
 8.  [✔️] Enums
 9.  [✔️] Strings
 10. [✔️] Modules
+11. [✔️] Hashmaps
 
 ## 📝 Notes
 
@@ -104,6 +105,13 @@ This repository contains my Rust learning journey with Rustlings exercises. My g
 - Visibility and public API in [exercises/10_modules/modules1.rs](exercises/10_modules/modules1.rs): made `get_secret_recipe()` private and exposed `make_sausage()` with `pub`, then called `sausage_factory::make_sausage()` from `main`.
 - Aliases and re-exports in [exercises/10_modules/modules2.rs](exercises/10_modules/modules2.rs): used `pub use` with `as` to re-export `fruits::PEAR` and `veggies::CUCUMBER` as `fruit` and `veggie`, so consumers can access `delicious_snacks::fruit` and `delicious_snacks::veggie`.
 - Scoped imports in one line in [exercises/10_modules/modules3.rs](exercises/10_modules/modules3.rs): brought `SystemTime` and `UNIX_EPOCH` from `std::time` into scope with `use std::{time::SystemTime, time::UNIX_EPOCH};` and printed seconds since the Unix epoch.
+
+### 11. Hashmaps
+- HashMaps store key-value pairs with fast lookup: `HashMap<K, V>`
+- Created HashMap with `HashMap::new()` in [exercises/11_hashmaps/hashmaps1.rs](exercises/11_hashmaps/hashmaps1.rs): used `.insert()` to add `String` keys and `u32` values
+- Entry API in [exercises/11_hashmaps/hashmaps2.rs](exercises/11_hashmaps/hashmaps2.rs): `.entry(key).or_insert(value)` inserts only if key doesn't exist, preventing overwrites
+- Custom structs as values in [exercises/11_hashmaps/hashmaps3.rs](exercises/11_hashmaps/hashmaps3.rs): `.entry(key).or_default()` creates entry with `Default` trait, then mutate the returned reference
+- Applied to soccer scores: tracked goals scored and conceded per team across multiple matches
 
 ### Quiz 1
 - Wrote function with `u32` params and return type
