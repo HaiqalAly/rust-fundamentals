@@ -111,6 +111,10 @@
 - Trait objects with `Box<dyn Error>` in [exercises/13_error_handling/errors5.rs](exercises/13_error_handling/errors5.rs): allows handling multiple error types by implementing the `Error` trait; `Box<dyn Error>` acts as a catch-all for any error type
 - Composing custom errors in [exercises/13_error_handling/errors6.rs](exercises/13_error_handling/errors6.rs): created `ParseIntError`; used `.map_err()` to convert error types when propagating with `?`
 
+## 14. Generics
+- Defined generic vector `Vec<T>` in [exercises/14_generics/generics1.rs](exercises/14_generics/generics1.rs): explicit type annotation `Vec<i32>` needed when compiler cannot infer type from usage
+- Generic structs and implementations in [exercises/14_generics/generics2.rs](exercises/14_generics/generics2.rs): defined `struct Wrapper<T>` to hold any type, and `impl<T> Wrapper<T>` to define methods for that generic type
+
 ---
 
 ## Quiz 1

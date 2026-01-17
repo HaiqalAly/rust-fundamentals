@@ -18,6 +18,7 @@ This repository contains my Rust learning journey with Rustlings exercises. My g
 11. [✔️] Hashmaps
 12. [✔️] Options
 13. [✔️] Error Handling
+14. [✔️] Generics
 
 ## 📝 Notes
 
