@@ -138,3 +138,10 @@
   - `Append(n)`: looped `n` times pushing "bar" to a mutable string
 - Imported function from module with `use crate::my_module::transformer`
 - Combined concepts: enums, match expressions, vectors, string methods, modules, and move semantics
+
+## Quiz 3
+- Refactored `ReportCard` struct to support multiple grade types using generics
+- Changed `grade: f32` to `grade: T` in the struct definition
+- Updated `impl` block to generic implementation `impl<T: std::fmt::Display>`
+- Used the `Display` trait bound to ensure the generic grade can be printed with `{}` inside `format!`
+- Enabled polymorphism: `ReportCard` can now accept `f32` (numeric) or `String`/`&str` (alphabetic) grades while sharing the same printing logic
