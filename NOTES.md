@@ -158,3 +158,24 @@
 - Updated `impl` block to generic implementation `impl<T: std::fmt::Display>`
 - Used the `Display` trait bound to ensure the generic grade can be printed with `{}` inside `format!`
 - Enabled polymorphism: `ReportCard` can now accept `f32` (numeric) or `String`/`&str` (alphabetic) grades while sharing the same printing logic
+
+## 18. Iterators
+- **Transformation & Collection**:
+  - `.iter()` creates an iterator from a collection.
+  - `.map()` transforms items lazily.
+  - `.collect()` consumes the iterator. It can infer the return type:
+    - `.collect::<Vec<_>>()`: Creates a list of results.
+    - `.collect::<String>()`: Joins iterator results into a single string.
+- **Handling Errors with Result**:
+  - `collect()` behavior changes based on return type:
+    - `Result<Vec<T>, E>`: Stops at the first error (fails fast).
+    - `Vec<Result<T, E>>`: Collects all results, including success and errors.
+- **Reduction**:
+  - `.fold(init, op)`: Accumulates a single value from the iterator, starting with an initial value.
+  - `.product()`: Specialized method to multiply all elements (concise alternative to `fold` for factorials).
+  - Ranges `(1..=num)` can be used to generate sequences easily.
+- **Filtering & Flattening**:
+  - `.filter()`: Keeps only items matching a predicate.
+  - `.values()`: Gets the values from a HashMap.
+  - `.flat_map()`: Maps each element to an iterator and then flattens the nested structure (e.g., extracting values from a list of HashMaps into a single stream).
+  - `.count()`: Consumes the iterator to count the remaining elements.
