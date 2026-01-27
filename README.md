@@ -23,6 +23,7 @@ This repository contains my Rust learning journey with Rustlings exercises. My g
 16. [✔️] Lifetimes
 17. [✔️] Tests
 18. [✔️] Iterators
+18. [✔️] Smart Pointers
 
 ## 📝 Notes
 

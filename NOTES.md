@@ -135,6 +135,48 @@
 - Used `assert_eq!(left, right)` to verify equality between values in [exercises/17_tests/tests2.rs](exercises/17_tests/tests2.rs)
 - Used `#[should_panic]` attribute to test that specific code paths (like invalid input) correctly panic in [exercises/17_tests/tests3.rs](exercises/17_tests/tests3.rs)
 
+## 18. Iterators
+- **Transformation & Collection**:
+  - `.iter()` creates an iterator from a collection.
+  - `.map()` transforms items lazily.
+  - `.collect()` consumes the iterator. It can infer the return type:
+    - `.collect::<Vec<_>>()`: Creates a list of results.
+    - `.collect::<String>()`: Joins iterator results into a single string.
+- **Handling Errors with Result**:
+  - `collect()` behavior changes based on return type:
+    - `Result<Vec<T>, E>`: Stops at the first error (fails fast).
+    - `Vec<Result<T, E>>`: Collects all results, including success and errors.
+- **Reduction**:
+  - `.fold(init, op)`: Accumulates a single value from the iterator, starting with an initial value.
+  - `.product()`: Specialized method to multiply all elements (concise alternative to `fold` for factorials).
+  - Ranges `(1..=num)` can be used to generate sequences easily.
+- **Filtering & Flattening**:
+  - `.filter()`: Keeps only items matching a predicate.
+  - `.values()`: Gets the values from a HashMap.
+  - `.flat_map()`: Maps each element to an iterator and then flattens the nested structure (e.g., extracting values from a list of HashMaps into a single stream).
+  - `.count()`: Consumes the iterator to count the remaining elements.
+
+## 19. Smart Pointers
+- **Box (`Box<T>`)**:
+  - Allocates values on the heap instead of the stack.
+  - **Recursive Types**: Necessary for defining types like linked lists (Cons list) where a type contains itself. Without `Box`, the size would be infinite/unknown at compile time. `Box` has a known pointer size.
+  - **Usage**: `Box::new(value)` moves the value to the heap.
+- **Rc (`Rc<T>`)**:
+  - Reference Counted smart pointer.
+  - **Multiple Ownership**: Allows multiple parts of your program to own the same data simultaneously (e.g., a "Sun" owned by multiple "Planets").
+  - **Single-threaded**: ONLY for use in single-threaded scenarios. It is faster than `Arc` because it doesn't need atomic operations.
+  - **Cloning**: `Rc::clone(&rc)` increments the reference count. Usually cheap (increments an integer), does not deep-copy the data.
+- **Arc (`Arc<T>`)**:
+  - Atomic Reference Counted.
+  - **Thread-safe**: Same mechanism as `Rc` but uses atomic operations for the counter, making it safe to share across threads.
+  - **Shared Ownership**: Used when multiple threads need access to the same read-only data.
+  - **Usage**: `Arc::clone(&arc)` creates a new handle for another thread.
+- **Cow (`Cow<T>`)**:
+  - "Clone on Write".
+  - **Optimization**: A smart enum that can hold either *borrowed* data (`&T`) or *owned* data (`T`).
+  - **Lazy Cloning**: It keeps data borrowed (cheap) as long as you only read it. It only clones (expensive) if you try to mutate it (`.to_mut()`).
+  - Useful for functions that verify data and only occasionally need to modify it.
+
 ---
 
 ## Quiz 1
@@ -158,24 +200,3 @@
 - Updated `impl` block to generic implementation `impl<T: std::fmt::Display>`
 - Used the `Display` trait bound to ensure the generic grade can be printed with `{}` inside `format!`
 - Enabled polymorphism: `ReportCard` can now accept `f32` (numeric) or `String`/`&str` (alphabetic) grades while sharing the same printing logic
-
-## 18. Iterators
-- **Transformation & Collection**:
-  - `.iter()` creates an iterator from a collection.
-  - `.map()` transforms items lazily.
-  - `.collect()` consumes the iterator. It can infer the return type:
-    - `.collect::<Vec<_>>()`: Creates a list of results.
-    - `.collect::<String>()`: Joins iterator results into a single string.
-- **Handling Errors with Result**:
-  - `collect()` behavior changes based on return type:
-    - `Result<Vec<T>, E>`: Stops at the first error (fails fast).
-    - `Vec<Result<T, E>>`: Collects all results, including success and errors.
-- **Reduction**:
-  - `.fold(init, op)`: Accumulates a single value from the iterator, starting with an initial value.
-  - `.product()`: Specialized method to multiply all elements (concise alternative to `fold` for factorials).
-  - Ranges `(1..=num)` can be used to generate sequences easily.
-- **Filtering & Flattening**:
-  - `.filter()`: Keeps only items matching a predicate.
-  - `.values()`: Gets the values from a HashMap.
-  - `.flat_map()`: Maps each element to an iterator and then flattens the nested structure (e.g., extracting values from a list of HashMaps into a single stream).
-  - `.count()`: Consumes the iterator to count the remaining elements.
