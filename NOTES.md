@@ -177,6 +177,23 @@
   - **Lazy Cloning**: It keeps data borrowed (cheap) as long as you only read it. It only clones (expensive) if you try to mutate it (`.to_mut()`).
   - Useful for functions that verify data and only occasionally need to modify it.
 
+## 20. Threads
+- **Spawning**: `thread::spawn(move || { ... })` creates a new thread along with a closure containing the code to run.
+  - The `move` keyword is often required to transfer ownership of variables into the thread's closure.
+- **Join Handles**: `spawn` returns a `JoinHandle`.
+  - Calling `.join()` blocks the current thread until the spawned thread finishes.
+  - `.join()` returns a `Result`, allowing you to retrieve the value returned by the thread (or handle panics).
+- **Shared Mutable State**:
+  - **Arc (`Arc<T>`)**: Atomic Reference Counting. Used to share ownership of data across multiple threads.
+  - **Mutex (`Mutex<T>`)**: Mutual Exclusion. Used to allow mutable access to shared data.
+  - **Arc<Mutex<T>>**: The standard pattern for shared mutable state.
+  - **Locking**: Call `.lock()` on the Mutex to get access to the inner data. This blocks until the lock is acquired. It returns a `MutexGuard` (wrapped in a Result) which automatically releases the lock when it goes out of scope.
+- **Channels**:
+  - `mpsc` (Multi-Producer, Single-Consumer) allows threads to communicate by sending messages.
+  - `mpsc::channel()` returns a `(Sender, Receiver)` tuple.
+  - **Cloning Senders**: To have multiple threads send to the same channel, you must `.clone()` the sender (`tx`).
+  - **Ownership**: Be careful about moving data (like struct fields) into threads. You may need to destructure structs or clone specific parts *before* spawning threads to ensure each thread gets the ownership it needs.
+
 ---
 
 ## Quiz 1
