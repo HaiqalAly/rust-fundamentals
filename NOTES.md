@@ -194,6 +194,17 @@
   - **Cloning Senders**: To have multiple threads send to the same channel, you must `.clone()` the sender (`tx`).
   - **Ownership**: Be careful about moving data (like struct fields) into threads. You may need to destructure structs or clone specific parts *before* spawning threads to ensure each thread gets the ownership it needs.
 
+## 21. Macros
+- **Definition**: Defined using `macro_rules!` followed by the name and a block.
+  - Unlike functions, macros end with `!`.
+- **Matching**: Macros use a pattern matching syntax similar to `match` expressions.
+  - `(patterns) => { code }`
+  - Arguments are prefixed with `$` (e.g., `$val:expr` matches an expression and binds it to `$val`).
+- **Scoping**:
+  - Macros are lexically scoped; they must be defined *before* they are called in the file.
+  - To use macros from a nested module, use `#[macro_use]` on the module declaration.
+- **Arms**: Macros can have multiple "arms" to handle different arguments, separated by semicolons `;`.
+
 ---
 
 ## Quiz 1

@@ -25,6 +25,7 @@ This repository contains my Rust learning journey with Rustlings exercises. My g
 18. [✔️] Iterators
 19. [✔️] Smart Pointers
 20. [✔️] Threads
+21. [✔️] Macros
 
 ## 📝 Notes
 
